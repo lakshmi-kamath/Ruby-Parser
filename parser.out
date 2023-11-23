@@ -1,0 +1,434 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    WHILE
+
+Grammar
+
+Rule 0     S' -> s
+Rule 1     s -> LOOP DO statements END
+Rule 2     statements -> statement
+Rule 3     statements -> statements statement
+Rule 4     statement -> assignment
+Rule 5     statement -> conditional
+Rule 6     statement -> BREAK
+Rule 7     statement -> puts_statement
+Rule 8     assignment -> ID EQUAL NUMBER
+Rule 9     assignment -> ID PLUSEQUAL NUMBER
+Rule 10    assignment -> ID MINUSEQUAL NUMBER
+Rule 11    assignment -> ID EQUAL ID PLUS NUMBER
+Rule 12    assignment -> ID EQUAL ID MINUS NUMBER
+Rule 13    conditional -> IF ID GREATER NUMBER
+Rule 14    conditional -> IF ID EQUAL NUMBER
+Rule 15    conditional -> IF ID LESSER NUMBER
+Rule 16    puts_statement -> PUTS ID
+Rule 17    puts_statement -> PUTS STRING
+
+Terminals, with rules where they appear
+
+BREAK                : 6
+DO                   : 1
+END                  : 1
+EQUAL                : 8 11 12 14
+GREATER              : 13
+ID                   : 8 9 10 11 11 12 12 13 14 15 16
+IF                   : 13 14 15
+LESSER               : 15
+LOOP                 : 1
+MINUS                : 12
+MINUSEQUAL           : 10
+NUMBER               : 8 9 10 11 12 13 14 15
+PLUS                 : 11
+PLUSEQUAL            : 9
+PUTS                 : 16 17
+STRING               : 17
+WHILE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 4
+conditional          : 5
+puts_statement       : 7
+s                    : 0
+statement            : 2 3
+statements           : 1 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . s
+    (1) s -> . LOOP DO statements END
+
+    LOOP            shift and go to state 2
+
+    s                              shift and go to state 1
+
+state 1
+
+    (0) S' -> s .
+
+
+
+state 2
+
+    (1) s -> LOOP . DO statements END
+
+    DO              shift and go to state 3
+
+
+state 3
+
+    (1) s -> LOOP DO . statements END
+    (2) statements -> . statement
+    (3) statements -> . statements statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . BREAK
+    (7) statement -> . puts_statement
+    (8) assignment -> . ID EQUAL NUMBER
+    (9) assignment -> . ID PLUSEQUAL NUMBER
+    (10) assignment -> . ID MINUSEQUAL NUMBER
+    (11) assignment -> . ID EQUAL ID PLUS NUMBER
+    (12) assignment -> . ID EQUAL ID MINUS NUMBER
+    (13) conditional -> . IF ID GREATER NUMBER
+    (14) conditional -> . IF ID EQUAL NUMBER
+    (15) conditional -> . IF ID LESSER NUMBER
+    (16) puts_statement -> . PUTS ID
+    (17) puts_statement -> . PUTS STRING
+
+    BREAK           shift and go to state 8
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    PUTS            shift and go to state 12
+
+    statements                     shift and go to state 4
+    statement                      shift and go to state 5
+    assignment                     shift and go to state 6
+    conditional                    shift and go to state 7
+    puts_statement                 shift and go to state 9
+
+state 4
+
+    (1) s -> LOOP DO statements . END
+    (3) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . BREAK
+    (7) statement -> . puts_statement
+    (8) assignment -> . ID EQUAL NUMBER
+    (9) assignment -> . ID PLUSEQUAL NUMBER
+    (10) assignment -> . ID MINUSEQUAL NUMBER
+    (11) assignment -> . ID EQUAL ID PLUS NUMBER
+    (12) assignment -> . ID EQUAL ID MINUS NUMBER
+    (13) conditional -> . IF ID GREATER NUMBER
+    (14) conditional -> . IF ID EQUAL NUMBER
+    (15) conditional -> . IF ID LESSER NUMBER
+    (16) puts_statement -> . PUTS ID
+    (17) puts_statement -> . PUTS STRING
+
+    END             shift and go to state 13
+    BREAK           shift and go to state 8
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    PUTS            shift and go to state 12
+
+    statement                      shift and go to state 14
+    assignment                     shift and go to state 6
+    conditional                    shift and go to state 7
+    puts_statement                 shift and go to state 9
+
+state 5
+
+    (2) statements -> statement .
+
+    END             reduce using rule 2 (statements -> statement .)
+    BREAK           reduce using rule 2 (statements -> statement .)
+    ID              reduce using rule 2 (statements -> statement .)
+    IF              reduce using rule 2 (statements -> statement .)
+    PUTS            reduce using rule 2 (statements -> statement .)
+
+
+state 6
+
+    (4) statement -> assignment .
+
+    END             reduce using rule 4 (statement -> assignment .)
+    BREAK           reduce using rule 4 (statement -> assignment .)
+    ID              reduce using rule 4 (statement -> assignment .)
+    IF              reduce using rule 4 (statement -> assignment .)
+    PUTS            reduce using rule 4 (statement -> assignment .)
+
+
+state 7
+
+    (5) statement -> conditional .
+
+    END             reduce using rule 5 (statement -> conditional .)
+    BREAK           reduce using rule 5 (statement -> conditional .)
+    ID              reduce using rule 5 (statement -> conditional .)
+    IF              reduce using rule 5 (statement -> conditional .)
+    PUTS            reduce using rule 5 (statement -> conditional .)
+
+
+state 8
+
+    (6) statement -> BREAK .
+
+    END             reduce using rule 6 (statement -> BREAK .)
+    BREAK           reduce using rule 6 (statement -> BREAK .)
+    ID              reduce using rule 6 (statement -> BREAK .)
+    IF              reduce using rule 6 (statement -> BREAK .)
+    PUTS            reduce using rule 6 (statement -> BREAK .)
+
+
+state 9
+
+    (7) statement -> puts_statement .
+
+    END             reduce using rule 7 (statement -> puts_statement .)
+    BREAK           reduce using rule 7 (statement -> puts_statement .)
+    ID              reduce using rule 7 (statement -> puts_statement .)
+    IF              reduce using rule 7 (statement -> puts_statement .)
+    PUTS            reduce using rule 7 (statement -> puts_statement .)
+
+
+state 10
+
+    (8) assignment -> ID . EQUAL NUMBER
+    (9) assignment -> ID . PLUSEQUAL NUMBER
+    (10) assignment -> ID . MINUSEQUAL NUMBER
+    (11) assignment -> ID . EQUAL ID PLUS NUMBER
+    (12) assignment -> ID . EQUAL ID MINUS NUMBER
+
+    EQUAL           shift and go to state 15
+    PLUSEQUAL       shift and go to state 16
+    MINUSEQUAL      shift and go to state 17
+
+
+state 11
+
+    (13) conditional -> IF . ID GREATER NUMBER
+    (14) conditional -> IF . ID EQUAL NUMBER
+    (15) conditional -> IF . ID LESSER NUMBER
+
+    ID              shift and go to state 18
+
+
+state 12
+
+    (16) puts_statement -> PUTS . ID
+    (17) puts_statement -> PUTS . STRING
+
+    ID              shift and go to state 19
+    STRING          shift and go to state 20
+
+
+state 13
+
+    (1) s -> LOOP DO statements END .
+
+    $end            reduce using rule 1 (s -> LOOP DO statements END .)
+
+
+state 14
+
+    (3) statements -> statements statement .
+
+    END             reduce using rule 3 (statements -> statements statement .)
+    BREAK           reduce using rule 3 (statements -> statements statement .)
+    ID              reduce using rule 3 (statements -> statements statement .)
+    IF              reduce using rule 3 (statements -> statements statement .)
+    PUTS            reduce using rule 3 (statements -> statements statement .)
+
+
+state 15
+
+    (8) assignment -> ID EQUAL . NUMBER
+    (11) assignment -> ID EQUAL . ID PLUS NUMBER
+    (12) assignment -> ID EQUAL . ID MINUS NUMBER
+
+    NUMBER          shift and go to state 22
+    ID              shift and go to state 21
+
+
+state 16
+
+    (9) assignment -> ID PLUSEQUAL . NUMBER
+
+    NUMBER          shift and go to state 23
+
+
+state 17
+
+    (10) assignment -> ID MINUSEQUAL . NUMBER
+
+    NUMBER          shift and go to state 24
+
+
+state 18
+
+    (13) conditional -> IF ID . GREATER NUMBER
+    (14) conditional -> IF ID . EQUAL NUMBER
+    (15) conditional -> IF ID . LESSER NUMBER
+
+    GREATER         shift and go to state 25
+    EQUAL           shift and go to state 26
+    LESSER          shift and go to state 27
+
+
+state 19
+
+    (16) puts_statement -> PUTS ID .
+
+    END             reduce using rule 16 (puts_statement -> PUTS ID .)
+    BREAK           reduce using rule 16 (puts_statement -> PUTS ID .)
+    ID              reduce using rule 16 (puts_statement -> PUTS ID .)
+    IF              reduce using rule 16 (puts_statement -> PUTS ID .)
+    PUTS            reduce using rule 16 (puts_statement -> PUTS ID .)
+
+
+state 20
+
+    (17) puts_statement -> PUTS STRING .
+
+    END             reduce using rule 17 (puts_statement -> PUTS STRING .)
+    BREAK           reduce using rule 17 (puts_statement -> PUTS STRING .)
+    ID              reduce using rule 17 (puts_statement -> PUTS STRING .)
+    IF              reduce using rule 17 (puts_statement -> PUTS STRING .)
+    PUTS            reduce using rule 17 (puts_statement -> PUTS STRING .)
+
+
+state 21
+
+    (11) assignment -> ID EQUAL ID . PLUS NUMBER
+    (12) assignment -> ID EQUAL ID . MINUS NUMBER
+
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+
+
+state 22
+
+    (8) assignment -> ID EQUAL NUMBER .
+
+    END             reduce using rule 8 (assignment -> ID EQUAL NUMBER .)
+    BREAK           reduce using rule 8 (assignment -> ID EQUAL NUMBER .)
+    ID              reduce using rule 8 (assignment -> ID EQUAL NUMBER .)
+    IF              reduce using rule 8 (assignment -> ID EQUAL NUMBER .)
+    PUTS            reduce using rule 8 (assignment -> ID EQUAL NUMBER .)
+
+
+state 23
+
+    (9) assignment -> ID PLUSEQUAL NUMBER .
+
+    END             reduce using rule 9 (assignment -> ID PLUSEQUAL NUMBER .)
+    BREAK           reduce using rule 9 (assignment -> ID PLUSEQUAL NUMBER .)
+    ID              reduce using rule 9 (assignment -> ID PLUSEQUAL NUMBER .)
+    IF              reduce using rule 9 (assignment -> ID PLUSEQUAL NUMBER .)
+    PUTS            reduce using rule 9 (assignment -> ID PLUSEQUAL NUMBER .)
+
+
+state 24
+
+    (10) assignment -> ID MINUSEQUAL NUMBER .
+
+    END             reduce using rule 10 (assignment -> ID MINUSEQUAL NUMBER .)
+    BREAK           reduce using rule 10 (assignment -> ID MINUSEQUAL NUMBER .)
+    ID              reduce using rule 10 (assignment -> ID MINUSEQUAL NUMBER .)
+    IF              reduce using rule 10 (assignment -> ID MINUSEQUAL NUMBER .)
+    PUTS            reduce using rule 10 (assignment -> ID MINUSEQUAL NUMBER .)
+
+
+state 25
+
+    (13) conditional -> IF ID GREATER . NUMBER
+
+    NUMBER          shift and go to state 30
+
+
+state 26
+
+    (14) conditional -> IF ID EQUAL . NUMBER
+
+    NUMBER          shift and go to state 31
+
+
+state 27
+
+    (15) conditional -> IF ID LESSER . NUMBER
+
+    NUMBER          shift and go to state 32
+
+
+state 28
+
+    (11) assignment -> ID EQUAL ID PLUS . NUMBER
+
+    NUMBER          shift and go to state 33
+
+
+state 29
+
+    (12) assignment -> ID EQUAL ID MINUS . NUMBER
+
+    NUMBER          shift and go to state 34
+
+
+state 30
+
+    (13) conditional -> IF ID GREATER NUMBER .
+
+    END             reduce using rule 13 (conditional -> IF ID GREATER NUMBER .)
+    BREAK           reduce using rule 13 (conditional -> IF ID GREATER NUMBER .)
+    ID              reduce using rule 13 (conditional -> IF ID GREATER NUMBER .)
+    IF              reduce using rule 13 (conditional -> IF ID GREATER NUMBER .)
+    PUTS            reduce using rule 13 (conditional -> IF ID GREATER NUMBER .)
+
+
+state 31
+
+    (14) conditional -> IF ID EQUAL NUMBER .
+
+    END             reduce using rule 14 (conditional -> IF ID EQUAL NUMBER .)
+    BREAK           reduce using rule 14 (conditional -> IF ID EQUAL NUMBER .)
+    ID              reduce using rule 14 (conditional -> IF ID EQUAL NUMBER .)
+    IF              reduce using rule 14 (conditional -> IF ID EQUAL NUMBER .)
+    PUTS            reduce using rule 14 (conditional -> IF ID EQUAL NUMBER .)
+
+
+state 32
+
+    (15) conditional -> IF ID LESSER NUMBER .
+
+    END             reduce using rule 15 (conditional -> IF ID LESSER NUMBER .)
+    BREAK           reduce using rule 15 (conditional -> IF ID LESSER NUMBER .)
+    ID              reduce using rule 15 (conditional -> IF ID LESSER NUMBER .)
+    IF              reduce using rule 15 (conditional -> IF ID LESSER NUMBER .)
+    PUTS            reduce using rule 15 (conditional -> IF ID LESSER NUMBER .)
+
+
+state 33
+
+    (11) assignment -> ID EQUAL ID PLUS NUMBER .
+
+    END             reduce using rule 11 (assignment -> ID EQUAL ID PLUS NUMBER .)
+    BREAK           reduce using rule 11 (assignment -> ID EQUAL ID PLUS NUMBER .)
+    ID              reduce using rule 11 (assignment -> ID EQUAL ID PLUS NUMBER .)
+    IF              reduce using rule 11 (assignment -> ID EQUAL ID PLUS NUMBER .)
+    PUTS            reduce using rule 11 (assignment -> ID EQUAL ID PLUS NUMBER .)
+
+
+state 34
+
+    (12) assignment -> ID EQUAL ID MINUS NUMBER .
+
+    END             reduce using rule 12 (assignment -> ID EQUAL ID MINUS NUMBER .)
+    BREAK           reduce using rule 12 (assignment -> ID EQUAL ID MINUS NUMBER .)
+    ID              reduce using rule 12 (assignment -> ID EQUAL ID MINUS NUMBER .)
+    IF              reduce using rule 12 (assignment -> ID EQUAL ID MINUS NUMBER .)
+    PUTS            reduce using rule 12 (assignment -> ID EQUAL ID MINUS NUMBER .)
+
